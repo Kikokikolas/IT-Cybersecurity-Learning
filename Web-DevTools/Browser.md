@@ -86,3 +86,196 @@ For example:
 Browser → Server/API → Response → Browser
 
 Modern web applications may communicate with servers many times after the initial page has loaded, especially when using APIs and JavaScript.
+
+## What really happens to the HTML?
+
+After the request the server can send something like this:
+<html>
+    <body>
+        <h1>Hello</h1>
+        <p>Welcome to my website</p>
+    </body>
+</html>
+
+The browser does a parsing of the html and builds a structure called DOM (Document Object Model)
+
+Document
+   |
+   └── html
+        |
+        └── body
+             |
+             ├── h1
+             |    └── "Hello"
+             |
+             └── p
+                  └── "Welcome to my website"
+
+JavaScript can modify DOM in real-time
+
+## CSS 
+The browser also analyses the CSS
+
+h1 {
+    font-size: 32px;
+}
+
+This creates another structure called CSSOM (CSS Object Model)
+
+After this 2 creations the browser combines DOM + CSSOM and generates a Render Tree.
+With the Render tree it can calculate where each element is going to apper in the screen.
+
+## How does the page appears?
+
+Simplifying:
+
+HTML
+ ↓
+DOM
+
+CSS
+ ↓
+CSSOM
+
+DOM + CSSOM
+     ↓
+Render Tree
+     ↓
+Layout
+     ↓
+Paint
+     ↓
+Compositing
+     ↓
+Pixels on Screen
+
+### Layout
+
+    The browser calculates where is the button going to stay, how much is the length, how much is the height , where the text starts...
+
+### Paint
+    After the layout the browser draws things like text, backgrounds,borders,shadows and images
+
+### Compositing
+    Some parts of the page can be treated in layers and then mixed up, most of the times with the help of the GPU
+
+
+## JavaScript
+
+JavaScript is fundamental in the browser.
+
+While HTML -> structure and CSS -> style
+
+Javascript -> behaviour of the website
+
+Example:
+
+button.addEventListener("click",function() {
+    alert("Hello!");
+});
+
+The browser has a JavaScript engine that executes this code, in the Choreme/Chromium it is the v8
+
+With JavaScript we can:
+    - Modify the DOM
+    - DO HTTP requests
+    - Read coockies
+    - Use localStorage
+    - Respond to clicks
+    - Create animations
+    - Communicate with APIs
+
+In the cybersecurity perspective this is very important because XSS attacks envolve JavaScript executing in a page.
+
+## A page an still stalk with the server after loading
+
+Many modern applications do this
+
+Browser
+   |
+   | GET /api/messages
+   v
+Server
+
+Browser
+   |
+   | POST /api/login
+   v
+Server
+
+Browser
+   |
+   | GET /api/profile
+   v
+Server
+
+without reloading the entire page.
+
+You can observe this in F12 -> Network
+
+## Browser and saved information
+
+The browser also has different types of stored data
+
+For example:
+    - Cookies
+    - LocalStorage
+    - Session Storage
+    - IndexedDB
+    - Cache
+
+### Cookies
+ A cookie can be something like this:
+    session_id=abc123xyz
+
+The browser can send it automatically to the server in the next requests:
+
+Cookie: session_id=abc123xyz
+
+This is a way of many websites to know this request belongs to this user that logged in. Thats why stealing certain session coockies can be extremely dangerous.
+
+## Cache
+
+The browser also saves some resources locally.
+
+Imagine that the site has:
+    Logo.png
+    style.css
+
+If the files dont change, the is no sense in downloading them again every time you visit the page so the browser can use browser cache, this improves the performance.
+
+## Same-Origin Policy
+
+Imagine that we have 2 pages opened
+
+bank.com and evil.com
+
+Without safety mechanisms, JavaScript of evil.com could try to read private data of bank.com.
+
+The browser has a fundamental defence called Same-Origin Policy. A origin is defined by scheme + host + port.
+For example: httpps://example.com:433 is a origin
+
+This policy prevents scripts of a origin acessing data from other origin.
+
+Example:
+
+https://example.com/page1
+https://example.com/page2
+
+have the same origin, because protocol is the same host is the same and port is the same (433)
+
+but https://example.com and https://google.com are different
+
+and this https://example.com
+http://example.com is also differente because the protocol is different
+
+## CORS
+
+CORS stands by Cross-Origin Resource Sharing
+
+CORS is a mechanism that allows the server to say to the browser that he allows another site to access some os his resources.
+
+For example
+Access-Control-Allow-Origin: https://example.com
+
+So example.com can access
