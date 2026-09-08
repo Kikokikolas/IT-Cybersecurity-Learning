@@ -65,3 +65,65 @@ For example:
 
 If a button does something when you click it, there may be a click event listener attached.
 
+## DOM Breakpoints
+
+This is more advanced
+It lets you pause JavaScript when something changes in the DOM
+
+For example:
+
+Pause when this element is removed.
+
+Useful for debugging.
+
+## Properties
+
+This shows the JavaScript object properties associated with the DOM element
+
+Remember:
+
+HTML element
+      ↓
+represented as
+      ↓
+JavaScript DOM object
+
+## Accessibility
+
+This lets you inspect how assistive technology sees the selected element.
+
+For example:
+
+Role
+Name
+ARIA attributes
+Accessibility tree
+
+## Important Things
+
+What we see on the screen is the current DOM, not necessarily exactly the HTML that orignally came from the server
+
+For example, the server may send:
+
+<div id="app"></div>
+
+Then JavaScript runs and creates:
+
+<div id="app">
+    <button>Login</button>
+    <p>Hello</p>
+</div>
+
+DevTools Elements will show the current DOM after JavaScript modifications.
+
+That is why:
+
+View Page Source
+
+and:
+
+F12 → Elements
+
+can sometimes show different things.
+
+That is a very useful concept to remember.
