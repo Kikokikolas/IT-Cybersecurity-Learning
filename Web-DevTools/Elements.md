@@ -1,14 +1,12 @@
 # Elements
 
-## Elements
+In the Elements panel, we can inspect the code that creates the DOM tree. The bottom part also contains more information about the selected element.
 
-In the elements section we can see the code, the one that creates the DOM tree, in the bottom part we can also see more information.
-
-The code is html + css + javascript
+The code is made up of HTML, CSS, and JavaScript.
 
 ## Style pane
 
-This pane shows CSS rules affecting the selected element
+This pane shows the CSS rules affecting the selected element.
 
 For example:
 
@@ -24,7 +22,7 @@ These:
 
 are CSS custom properties, often called CSS variables.
 
-For exemple:
+For example:
 
 --main-color: #ffffff;
 
@@ -34,14 +32,14 @@ color: var(--main-color);
 
 ## Computed
 
-In computed we can see the final CSS values after chrome has resolved everything.
+In Computed, we can see the final CSS values after Chrome has resolved everything.
 
 For example, many CSS rules might affect:
     font-size
 
 But Computed shows:
     font-size: 16px
-Which is the acutal final value being rendered.
+This is the actual final value being rendered.
 
 ## Layout
 
@@ -54,7 +52,7 @@ Useful when you want to understand why elements are positioned in a particular w
 
 ## Event Listeners
 
-This shows javascript events attached to the select ellement
+This shows JavaScript events attached to the selected element.
 
 For example:
 
@@ -67,8 +65,8 @@ If a button does something when you click it, there may be a click event listene
 
 ## DOM Breakpoints
 
-This is more advanced
-It lets you pause JavaScript when something changes in the DOM
+This is a more advanced feature.
+It lets you pause JavaScript when something changes in the DOM.
 
 For example:
 
@@ -101,7 +99,7 @@ Accessibility tree
 
 ## Important Things
 
-What we see on the screen is the current DOM, not necessarily exactly the HTML that orignally came from the server
+What we see on the screen is the current DOM, which is not necessarily exactly the HTML that originally came from the server.
 
 For example, the server may send:
 

@@ -2,23 +2,23 @@
 
 ## How a Browser Communicates with a Web Server
 
-When a user enters a website URL, the browser communicates with the web server to request the resources needed to display the page
+When a user enters a website URL, the browser communicates with the web server to request the resources needed to display the page.
 
 The process is something like this:
 
-1. The user enter a URL in the browser
-2. The DNS resolver the domain name to the IP address
+1. The user enters a URL in the browser.
+2. The DNS resolver translates the domain name into an IP address.
 3. The browser establishes a connection with the server
 4. The browser sends an HTTP/HTTPS request
 5. The server responds with the requested resource, usually an HTML document
-6. The browser reads the HTML and discovers other resources required such as:
+6. The browser reads the HTML and discovers other required resources, such as:
     - CSS files
-    - Javascript files
+    - JavaScript files
     - Images
     - Fonts
-    - API data (dynamic data of server; ex: JSON or information uploaded via JavaScript to fullfil the page)
-7. The browser sens additional requests for those resources
-8. The browser processes the recevied files and renders the webpage locally
+    - API data (dynamic data from the server, such as JSON or information loaded via JavaScript to complete the page)
+7. The browser sends additional requests for those resources.
+8. The browser processes the received files and renders the webpage locally.
 
 Example:
 
@@ -49,7 +49,7 @@ The browser receives and executes client-side resources as:
 - CSS
 - JavaScript
 
-Because these files are sent for the user's browser, they can normally be inspected using Browser Devloper Tools.
+Because these files are sent to the user's browser, they can normally be inspected using the browser's Developer Tools.
 
 Server-side code runs on the server and is not normally sent to the browser.
 
@@ -73,11 +73,11 @@ For this reason, sensitive information such as:
 - Database credentials
 - Authentication secrets
 
-Should never be stored directly in client-side JavaScript or HTML
+should never be stored directly in client-side JavaScript or HTML.
 
 ## Browser and Server Communication
 
-The browser is not permanently "inside" or connected to the server.
+The browser is not permanently connected to the server.
 
 Instead, communication happens when the browser needs to request or send information.
 
@@ -89,7 +89,7 @@ Modern web applications may communicate with servers many times after the initia
 
 ## What really happens to the HTML?
 
-After the request the server can send something like this:
+After the request, the server can send something like this:
 <html>
     <body>
         <h1>Hello</h1>
@@ -97,7 +97,7 @@ After the request the server can send something like this:
     </body>
 </html>
 
-The browser does a parsing of the html and builds a structure called DOM (Document Object Model)
+The browser parses the HTML and builds a structure called the DOM (Document Object Model).
 
 Document
    |
@@ -111,10 +111,10 @@ Document
              └── p
                   └── "Welcome to my website"
 
-JavaScript can modify DOM in real-time
+JavaScript can modify the DOM in real time.
 
-## CSS 
-The browser also analyses the CSS
+## CSS
+The browser also analyzes the CSS.
 
 h1 {
     font-size: 32px;
@@ -122,10 +122,10 @@ h1 {
 
 This creates another structure called CSSOM (CSS Object Model)
 
-After this 2 creations the browser combines DOM + CSSOM and generates a Render Tree.
-With the Render tree it can calculate where each element is going to apper in the screen.
+After creating both structures, the browser combines the DOM and CSSOM to generate a render tree.
+Using the render tree, it can calculate where each element will appear on the screen.
 
-## How does the page appears?
+## How does the page appear?
 
 Simplifying:
 
@@ -151,22 +151,22 @@ Pixels on Screen
 
 ### Layout
 
-    The browser calculates where is the button going to stay, how much is the length, how much is the height , where the text starts...
+    The browser calculates where the button will be placed, its width and height, and where the text begins.
 
 ### Paint
-    After the layout the browser draws things like text, backgrounds,borders,shadows and images
+    After the layout, the browser draws things such as text, backgrounds, borders, shadows, and images.
 
 ### Compositing
-    Some parts of the page can be treated in layers and then mixed up, most of the times with the help of the GPU
+    Some parts of the page can be treated as layers and then combined, usually with the help of the GPU.
 
 
 ## JavaScript
 
 JavaScript is fundamental in the browser.
 
-While HTML -> structure and CSS -> style
+HTML provides structure, while CSS provides styling.
 
-Javascript -> behaviour of the website
+JavaScript provides the website's behavior.
 
 Example:
 
@@ -174,20 +174,20 @@ button.addEventListener("click",function() {
     alert("Hello!");
 });
 
-The browser has a JavaScript engine that executes this code, in the Choreme/Chromium it is the v8
+The browser has a JavaScript engine that executes this code. In Chrome and Chromium, that engine is V8.
 
 With JavaScript we can:
     - Modify the DOM
-    - DO HTTP requests
-    - Read coockies
+    - Make HTTP requests
+    - Read cookies
     - Use localStorage
     - Respond to clicks
     - Create animations
     - Communicate with APIs
 
-In the cybersecurity perspective this is very important because XSS attacks envolve JavaScript executing in a page.
+From a cybersecurity perspective, this is very important because XSS attacks involve JavaScript executing in a page.
 
-## A page an still stalk with the server after loading
+## A page can still communicate with the server after loading
 
 Many modern applications do this
 
@@ -209,9 +209,9 @@ Browser
    v
 Server
 
-without reloading the entire page.
+These requests can happen without reloading the entire page.
 
-You can observe this in F12 -> Network
+You can observe this in DevTools by pressing F12 and opening the Network panel.
 
 ## Browser and saved information
 
@@ -232,7 +232,7 @@ The browser can send it automatically to the server in the next requests:
 
 Cookie: session_id=abc123xyz
 
-This is a way of many websites to know this request belongs to this user that logged in. Thats why stealing certain session coockies can be extremely dangerous.
+This allows many websites to know that a request belongs to a logged-in user. That is why stealing certain session cookies can be extremely dangerous.
 
 ## Cache
 
@@ -242,40 +242,122 @@ Imagine that the site has:
     Logo.png
     style.css
 
-If the files dont change, the is no sense in downloading them again every time you visit the page so the browser can use browser cache, this improves the performance.
+If the files do not change, there is no need to download them again every time you visit the page. The browser can use its cache instead, which improves performance.
 
 ## Same-Origin Policy
 
-Imagine that we have 2 pages opened
+Imagine that we have two pages open:
 
 bank.com and evil.com
 
 Without safety mechanisms, JavaScript of evil.com could try to read private data of bank.com.
 
-The browser has a fundamental defence called Same-Origin Policy. A origin is defined by scheme + host + port.
-For example: httpps://example.com:433 is a origin
+The browser has a fundamental defense called the Same-Origin Policy. An origin is defined by its scheme, host, and port.
+For example, https://example.com:443 is an origin.
 
-This policy prevents scripts of a origin acessing data from other origin.
+This policy prevents scripts from one origin from accessing data from another origin.
 
 Example:
 
 https://example.com/page1
 https://example.com/page2
 
-have the same origin, because protocol is the same host is the same and port is the same (433)
+have the same origin because the protocol, host, and port are the same (443).
 
 but https://example.com and https://google.com are different
 
-and this https://example.com
-http://example.com is also differente because the protocol is different
+Also, https://example.com and http://example.com have different origins because
+the protocols are different.
 
 ## CORS
 
-CORS stands by Cross-Origin Resource Sharing
+CORS stands for Cross-Origin Resource Sharing.
 
-CORS is a mechanism that allows the server to say to the browser that he allows another site to access some os his resources.
+CORS is a mechanism that allows a server to tell the browser that another site
+is allowed to access some of its resources.
 
-For example
+For example:
 Access-Control-Allow-Origin: https://example.com
 
-So example.com can access
+This allows example.com to access the resource.
+
+## Browser separation
+
+Modern browsers use multiple processes.
+
+Browser Process
+       |
+       ├── Renderer Process → Site A
+       |
+       ├── Renderer Process → Site B
+       |
+       └── GPU Process
+
+These processes are isolated from one another, which improves security, stability,
+and performance.
+
+## Sandbox
+
+The renderer process responsible for reading HTML and JavaScript runs in a sandbox.
+This means that the operating system does not give the process unrestricted permissions.
+
+It cannot directly open or read files on the disk.
+It cannot create direct network connections.
+It cannot access the camera, microphone, or processes belonging to other programs.
+
+If the page needs to save a file, the renderer process does not do so directly.
+Instead, it requests this action from the browser process, which has the operating
+system permissions required to perform it.
+
+## Processes
+
+We will discuss this in more detail on another page.
+
+A process is a program in execution.
+
+A process has its own virtual space and execution state.
+Typical memory areas include:
+
+- Text / Code segment
+- Data segment
+- BSS
+- Heap
+- Stack
+
+Process Memory
+
++------------------+
+|      Stack       |
++------------------+
+|                  |
+|     Free space   |
+|                  |
++------------------+
+|       Heap       |
++------------------+
+|       BSS        |
++------------------+
+|       Data       |
++------------------+
+|   Text / Code    |
++------------------+
+
+A process also has resources and execution information such as:
+
+- Process ID (PID)
+- CPU registers
+- Program Counter
+- Open files
+- Permissions
+- Threads
+
+Modern browsers use multiple processes for security, stability and performance.
+
+Examples include:
+
+- Browser process
+- Renderer processes
+- GPU process
+- Utility processes
+
+Each process has its own memory space, which helps isolate websites and reduce the impact of crashes or malicious code.

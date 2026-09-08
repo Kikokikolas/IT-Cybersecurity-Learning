@@ -1,11 +1,11 @@
 # Network
 
-Network is probably one of the most useful DevTools tabs because it lets you see the actual communication between the browser and the servers.
+The Network panel is one of the most useful DevTools tabs because it lets you see the communication between the browser and the servers.
 
 Example screenshot:
 ![Browser Network panel showing page requests](images/network-overview.png)
 
-In this case files like
+In this case, files such as these are visible:
 
 layout-6e36f4690509ff21.js
 error-1fd70086800f83e1.js
@@ -23,20 +23,20 @@ Browser
 
 Chrome records those requests in the Network panel while DevTools is open.
 
-The columns that i have are:
+The columns shown are:
 Name | Status | Type | Initiator | Size | Time
 
-Name -> is the name of the resource
+Name -> the name of the resource
 
-Status -> is the HTTP response status
+Status -> the HTTP response status
 
-Type -> tells what type of resource Chrome think it is
+Type -> the type of resource Chrome thinks it is
 
-Initiator -> tells you what cause this request to happen
+Initiator -> what caused this request to happen
 
-Size -> tells you how much data was transfered for the resource
+Size -> how much data was transferred for the resource
 
-Time -> How long the request took
+Time -> how long the request took
 
 Very roughly:
 Browser sends request
@@ -59,7 +59,7 @@ receives response
 
 ### Request details
 
-When selecting a request, DevTools can show:
+When you select a request, DevTools can show:
 
 - Headers
 - Payload

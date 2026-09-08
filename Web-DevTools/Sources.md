@@ -1,12 +1,12 @@
 # Sources
 
-Sources is the panel where you inspect the actual files/code that the browser has loaded, especially JavaScript.
+Sources is the panel where you inspect the actual files and code that the browser has loaded, especially JavaScript.
 
-Elements -> what does the current DOM looks like?
+Elements -> what does the current DOM look like?
 
 Console -> what is JavaScript doing / what errors are happening?
 
-Sources -> what source files did the browser load, and where is the code running?
+Sources -> which source files did the browser load, and where is the code running?
 
 When you open Sources, you will normally see several areas.
 
@@ -27,7 +27,7 @@ Sources
     ├── Scope
     └── Watch
 
-The most important part initially is Page. There we can browse the resources that came from the current page and sometimes from third-party domains.
+The most important part initially is Page. There, we can browse the resources that came from the current page and sometimes from third-party domains.
 
 For example:
 
@@ -41,15 +41,15 @@ example.com
 googleapis.com
 └── some-library.js
 
-That tells you the browser did not necessarily receive everything from just one server. Modern pages commonly load scripts, fonts, analytics, APIs, and other resources from multiple domains.
+This shows that the browser did not necessarily receive everything from a single server. Modern pages commonly load scripts, fonts, analytics, APIs, and other resources from multiple domains.
 
-That is JavaScript that was delivered to the browser and can therefore be inspected.
+This JavaScript was delivered to the browser and can therefore be inspected.
 
 This reinforces something we discussed earlier:
 
 Server-side source code
         ↓
-usually remains on server
+usually remains on the server
 
 Client-side JavaScript
         ↓
