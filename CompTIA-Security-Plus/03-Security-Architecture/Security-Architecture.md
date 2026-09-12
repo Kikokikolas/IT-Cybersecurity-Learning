@@ -1,47 +1,44 @@
-3.1 — SECURITY IMPLICATIONS OF DIFFERENT ARCHITECTURE MODELS
+## 3.1 — Security Implications of Different Architecture Models
 
-The official objectives include cloud, IaC, serverless, microservices, segmentation, SDN, on-premises, containers, virtualization, IoT, ICS/SCADA, RTOS, embedded systems and high availability.
+The official objectives include cloud, IaC, serverless, microservices, segmentation, SDN, on-premises, containers, virtualization, IoT, ICS/SCADA, RTOS, embedded systems, and high availability.
 
-CLOUD COMPUTING
+## Cloud Computing
 
 Cloud computing means using computing resources provided remotely by a cloud provider.
 
 Examples:
 
-Servers
-Storage
-Databases
-Applications
-Networking
+- Servers
+- Storage
+- Databases
+- Applications
+- Networking
 
 Instead of buying all the hardware yourself:
 
 Company
-   ↓
+↓
 Internet
-   ↓
+↓
 Cloud provider
 
 Examples of cloud providers:
 
-AWS
-Microsoft Azure
-Google Cloud
-SHARED RESPONSIBILITY MODEL
+- AWS
+- Microsoft Azure
+- Google Cloud
+
+## Shared Responsibility Model
 
 This is extremely important.
 
 When using cloud services:
 
-The cloud provider is responsible for some security.
+- The cloud provider is responsible for some security.
+- The customer is still responsible for other security.
+- The responsibility changes depending on the service model.
 
-But:
-
-The customer is still responsible for other security.
-
-The responsibility changes depending on the service model.
-
-IaaS — INFRASTRUCTURE AS A SERVICE
+### IaaS — Infrastructure as a Service
 
 The cloud provider manages the physical infrastructure.
 
@@ -50,209 +47,183 @@ You manage much more of the software environment.
 Example:
 
 Cloud provider:
-Physical servers
-Storage
-Networking
-Virtualization
+
+- Physical servers
+- Storage
+- Networking
+- Virtualization
 
 Customer:
-Operating system
-Applications
-Configurations
-Accounts
-Data
+
+- Operating system
+- Applications
+- Configurations
+- Accounts
+- Data
 
 Examples include virtual machines in AWS/Azure.
 
-Memory:
+Memory: IaaS gives you the most control — and more responsibility.
 
-IaaS gives you the most control — and more responsibility.
+### PaaS — Platform as a Service
 
-PaaS — PLATFORM AS A SERVICE
-
-Provider manages more of the stack.
+The provider manages more of the stack.
 
 You mainly manage:
 
-Applications
-Data
-Users
+- Applications
+- Data
+- Users
 
 The provider manages things such as:
 
-Operating system
-Runtime
-Infrastructure
+- Operating system
+- Runtime
+- Infrastructure
 
-Memory:
+Memory: PaaS = I build my app, provider manages the platform.
 
-PaaS = I build my app, provider manages the platform.
+### SaaS — Software as a Service
 
-SaaS — SOFTWARE AS A SERVICE
-
-Provider manages almost everything.
+The provider manages almost everything.
 
 You simply use the application.
 
 Examples:
 
-Microsoft 365
-Google Workspace
-Salesforce
+- Microsoft 365
+- Google Workspace
+- Salesforce
 
 But you are still normally responsible for things such as:
 
-user accounts
-permissions
-MFA
-data
-configuration
+- User accounts
+- Permissions
+- MFA
+- Data
+- Configuration
 
-Important exam point:
+Important exam point: moving something to the cloud does not remove your security responsibilities.
 
-Moving something to the cloud does NOT remove your security responsibilities.
-
-CLOUD RESPONSIBILITY MEMORY
+### Cloud Responsibility Memory
 
 Think:
 
-IaaS → customer manages MOST
-
-PaaS → customer manages LESS
-
-SaaS → customer manages LEAST
+- IaaS → customer manages MOST
+- PaaS → customer manages LESS
+- SaaS → customer manages LEAST
 
 But the customer normally still has responsibility for:
 
-identity + access + data + configuration
+- Identity
+- Access
+- Data
+- Configuration
 
-HYBRID CLOUD
+## Hybrid Cloud
 
 A hybrid environment combines:
 
-On-premises infrastructure
-+
-Cloud infrastructure
+- On-premises infrastructure
+- Cloud infrastructure
 
 Example:
 
-Company database → local data centre
-
-Web applications → Azure
-
-Backups → AWS
+- Company database → local data centre
+- Web applications → Azure
+- Backups → AWS
 
 Benefits:
 
-flexibility;
-gradual migration;
-keep sensitive resources locally.
+- Flexibility
+- Gradual migration
+- Keep sensitive resources locally
 
 Problems:
 
-more complex security;
-identity synchronization;
-multiple networks;
-monitoring becomes harder;
-more possible misconfigurations.
-THIRD-PARTY VENDORS
+- More complex security
+- Identity synchronization
+- Multiple networks
+- Monitoring becomes harder
+- More possible misconfigurations
+
+## Third-Party Vendors
 
 Using cloud means depending on another organization.
 
-This introduces:
-
-third-party risk
+This introduces third-party risk.
 
 Questions include:
 
-Can the provider secure our information?
-Where is our data stored?
-What happens if the provider goes offline?
-What happens if the provider is breached?
+- Can the provider secure our information?
+- Where is our data stored?
+- What happens if the provider goes offline?
+- What happens if the provider is breached?
 
-Remember:
+Remember: outsourcing a service does not mean outsourcing all responsibility.
 
-Outsourcing a service does not mean outsourcing all responsibility.
+## Infrastructure as Code (IaC)
 
-INFRASTRUCTURE AS CODE — IaC
-
-IaC means:
-
-Infrastructure is created/configured using code rather than manually.
+IaC means infrastructure is created and configured using code rather than manually.
 
 Instead of manually creating 50 servers:
 
-Administrator clicks
-Create VM
-Configure firewall
-Configure storage
-...
+- Administrator clicks Create VM
+- Configure firewall
+- Configure storage
+- ...
 
-you define it in a configuration.
+You define it in a configuration.
 
 Conceptually:
 
+```text
 server_count = 50
 OS = Linux
 firewall_port = 443
 encryption = enabled
+```
 
 Then automation builds it.
 
 Examples of IaC technologies include:
 
-Terraform
-CloudFormation
-Ansible
-SECURITY BENEFITS OF IaC
+- Terraform
+- CloudFormation
+- Ansible
+
+## Security Benefits of IaC
 
 IaC provides:
 
-Consistency
+- Consistency
+- Repeatability
+- Version control
+- Automation
 
 Every deployment follows the same configuration.
 
-Repeatability
-
 Can rebuild environments quickly.
-
-Version control
 
 Changes can be tracked.
 
-Automation
-
 Less manual configuration.
 
-But there is a major risk:
-
-A bad configuration can also be automatically deployed everywhere.
+But there is a major risk: a bad configuration can also be automatically deployed everywhere.
 
 Example:
 
-Firewall rule accidentally says:
-
-ALLOW ANY → database
+Firewall rule accidentally says: ALLOW ANY → database.
 
 IaC deploys it to 100 servers.
 
-Automation makes good configuration faster.
+Automation makes good configuration faster, but automation also makes mistakes faster.
 
-But:
+## Serverless Computing
 
-automation also makes mistakes faster.
+Serverless does not mean there are no servers; servers still exist.
 
-SERVERLESS COMPUTING
-
-Serverless does NOT mean:
-
-there are no servers.
-
-Servers still exist.
-
-It means:
-
-the customer does not manage them directly.
+It means the customer does not manage them directly.
 
 Example:
 
@@ -264,80 +235,64 @@ Function finishes
 
 Examples:
 
-AWS Lambda
-Azure Functions
-Google Cloud Functions
+- AWS Lambda
+- Azure Functions
+- Google Cloud Functions
 
 Benefits:
 
-easy scaling;
-less infrastructure management;
-pay for execution;
-quick deployment.
+- Easy scaling
+- Less infrastructure management
+- Pay for execution
+- Quick deployment
 
 Security concerns:
 
-insecure functions;
-excessive permissions;
-vulnerable dependencies;
-cloud misconfiguration;
-third-party risk.
+- Insecure functions
+- Excessive permissions
+- Vulnerable dependencies
+- Cloud misconfiguration
+- Third-party risk
 
-Memory:
+Memory: Serverless = provider manages the server infrastructure.
 
-Serverless = provider manages the server infrastructure.
+## Microservices
 
-MICROSERVICES
-
-Traditional application:
-
-One giant application
-
-This is often called:
-
-monolithic architecture.
+Traditional application: one giant application, often called a monolithic architecture.
 
 Microservices split it into smaller independent services.
 
 Example:
 
-Online Store
-
-Authentication Service
-Payment Service
-Inventory Service
-Shipping Service
-Customer Service
+- Authentication Service
+- Payment Service
+- Inventory Service
+- Shipping Service
+- Customer Service
 
 Benefits:
 
-easier scaling;
-individual components can be updated independently;
-failures may be isolated.
+- Easier scaling
+- Individual components can be updated independently
+- Failures may be isolated
 
 Security problems:
 
-Many services communicate with each other.
+Many services communicate with each other, which means more:
 
-That means more:
+- APIs
+- Authentication
+- Network connections
+- Credentials
+- Certificates
 
-APIs
-authentication
-network connections
-credentials
-certificates
+Therefore, there is a larger potential attack surface.
 
-Therefore:
-
-larger potential attack surface.
-
-PHYSICAL ISOLATION
+## Physical Isolation
 
 Physical isolation means systems are separated physically.
 
-The strongest example is:
-
-AIR-GAPPED NETWORK
+The strongest example is an air-gapped network.
 
 An air-gapped network has no normal connection to another network such as the Internet.
 
@@ -345,59 +300,413 @@ Example:
 
 Internet
 
-      X
+X
 
 Secure military network
 
 Advantages:
 
-extremely difficult for remote attackers to reach.
+- Extremely difficult for remote attackers to reach
 
 Problems:
 
-difficult updates;
-difficult administration;
-USB/removable devices may still introduce malware;
-expensive.
+- Difficult updates
+- Difficult administration
+- USB/removable devices may still introduce malware
+- Expensive
 
-Exam clue:
+Exam clue: “System must have maximum isolation from external networks.”
 
-“System must have maximum isolation from external networks.”
+Think: air gap.
 
-Think:
+## Logical Segmentation
 
-Air gap
-
-LOGICAL SEGMENTATION
-
-Logical segmentation separates systems using networking technologies rather than physically separate cables/equipment.
+Logical segmentation separates systems using networking technologies rather than physically separate cables or equipment.
 
 Examples:
 
-VLANs
-subnets
-firewall rules
-ACLs
+- VLANs
+- Subnets
+- Firewall rules
+- ACLs
 
 Example:
 
-VLAN 10 → Employees
-
-VLAN 20 → Servers
-
-VLAN 30 → Guests
-
-VLAN 40 → IoT
+- VLAN 10 → Employees
+- VLAN 20 → Servers
+- VLAN 30 → Guests
+- VLAN 40 → IoT
 
 Why?
 
-If an attacker compromises the guest network:
+If an attacker compromises the guest network, they should not automatically reach internal servers.
 
-they should not automatically reach internal servers.
+## Segmentation
 
-SEGMENTATION
+Segmentation reduces lateral movement.
 
-Segmentation reduces:
+Lateral movement means:
+
+Attacker compromises Computer A
+↓
+Moves to Computer B
+↓
+Moves to Server C
+↓
+Moves to Domain Controller
+
+Segmentation creates barriers.
+
+## Microsegmentation
+
+Microsegmentation makes segmentation even more granular.
+
+Instead of:
+
+- Users network
+- Servers network
+
+You might have:
+
+- Web Server → can only contact App Server
+- App Server → can only contact Database
+- Database → accepts only specific traffic
+
+Very useful in Zero Trust environments.
+
+## SDN — Software-Defined Networking
+
+Traditional networking:
+
+- Configure Router A
+- Configure Router B
+- Configure Switch A
+- Configure Switch B
+
+SDN separates the control plane from the data plane.
+
+### Control Plane
+
+Makes decisions. Example: where should this network traffic go?
+
+### Data Plane
+
+Actually forwards packets.
+
+With SDN:
+
+Central SDN Controller
+↓
+Switches
+Routers
+Network devices
+
+Instead of manually configuring every device, software centrally manages the network.
+
+Memory: SDN = centrally programmable networking.
+
+## On-Premises
+
+Infrastructure is physically located and controlled by the organization.
+
+Example:
+
+- Company building
+- Server room
+- Switches
+- Storage
+- Firewalls
+- Servers
+
+Advantages:
+
+- Greater control
+- Physical control
+- Customization
+
+Disadvantages:
+
+- Expensive
+- Organization handles hardware
+- Organization handles maintenance
+- Organization handles power/cooling
+- Organization handles physical security
+
+## Cloud vs On-Premises
+
+| Cloud | On-premises |
+|---|---|
+| Provider owns much infrastructure | Company owns infrastructure |
+| Easy scaling | Scaling requires hardware |
+| Operational expense | Higher capital expense |
+| Shared responsibility | Organization responsible for almost everything |
+| Fast deployment | Usually slower |
+| Third-party dependency | Greater direct control |
+
+## Centralized vs Decentralized
+
+### Centralized
+
+Control and resources are concentrated in one place.
+
+Example:
+
+- Central authentication server
+- Central SIEM
+- Central management console
+
+Advantages:
+
+- Easier administration
+- Consistent policies
+- Easier monitoring
+
+Problem: a central resource can become a single point of failure.
+
+### Decentralized
+
+Control and resources are distributed.
+
+Advantages:
+
+- More resilience
+- Fewer single points of failure
+
+Problems:
+
+- Harder management
+- Inconsistent configurations
+- Harder monitoring
+
+## Virtualization
+
+Virtualization allows multiple virtual computers to share physical hardware.
+
+Example:
+
+Physical Server
+↓
+Hypervisor
+├── VM1
+├── VM2
+└── VM3
+
+### Hypervisor
+
+The hypervisor manages virtual machines.
+
+Two broad types:
+
+#### Type 1
+
+Runs directly on hardware.
+
+Hardware
+↓
+Hypervisor
+↓
+VMs
+
+Often used in data centres.
+
+#### Type 2
+
+Runs on top of an operating system.
+
+Hardware
+↓
+Host OS
+↓
+Hypervisor
+↓
+VM
+
+## Virtualization Security Risks
+
+One major concept: VM escape.
+
+An attacker escapes from a virtual machine and reaches the hypervisor or other VMs. That defeats isolation.
+
+Another issue: resource reuse.
+
+Sensitive information left in shared resources may become accessible.
+
+## Containers
+
+Containers isolate applications but usually share the host operating system kernel.
+
+Conceptually:
+
+Host OS
+↓
+Container Engine
+├── Container A
+├── Container B
+└── Container C
+
+Examples:
+
+- Docker
+- Kubernetes environments
+
+## VM vs Container
+
+### Virtual machine
+
+Each VM has its own operating system.
+
+### Container
+
+Containers generally share the host OS kernel.
+
+Therefore containers are usually:
+
+- Smaller
+- Faster
+- More efficient
+
+But isolation can be weaker than fully separate VMs.
+
+Memory: VM virtualizes a computer; container isolates an application.
+
+## IoT — Internet of Things
+
+IoT devices include:
+
+- Smart cameras
+- Smart TVs
+- Thermostats
+- Smart locks
+- Sensors
+- Medical devices
+- Smart appliances
+
+Security problems:
+
+- Default passwords
+- Weak firmware
+- Poor patch support
+- Long lifespans
+- Insecure protocols
+- Limited computing resources
+
+Best approach often includes:
+
+- Network segmentation
+- Change default passwords
+- Patch firmware
+- Disable unnecessary services
+- Monitor traffic
+
+## Embedded Systems
+
+An embedded system performs a dedicated function inside another device.
+
+Examples:
+
+- Car control system
+- Printer
+- Medical device
+- Industrial machinery
+- Smart appliance
+
+They often have:
+
+- Limited resources
+- Long lifecycle
+- Difficulty patching
+
+## RTOS — Real-Time Operating System
+
+A real-time operating system is designed to respond within predictable timing constraints.
+
+Examples:
+
+- Airbag system
+- Medical equipment
+- Industrial robot
+- Aircraft control
+
+The important thing is response must happen at the correct time.
+
+Security challenge: availability and timing may be more important than installing the latest patch immediately.
+
+## ICS — Industrial Control System
+
+ICS controls industrial equipment.
+
+Examples:
+
+- Manufacturing
+- Power plants
+- Water treatment
+- Factories
+- Oil pipelines
+
+### SCADA
+
+Supervisory Control and Data Acquisition.
+
+SCADA is used to monitor and control industrial processes across potentially large geographic areas.
+
+Conceptually:
+
+Control Center
+↓
+Network
+↓
+PLC / Industrial Devices
+↓
+Physical equipment
+
+Examples:
+
+- Water systems
+- Electrical grid
+- Pipelines
+
+## ICS/SCADA Security
+
+Traditional IT priority might be:
+
+- Confidentiality
+- Integrity
+- Availability
+
+In industrial systems, availability and safety can be the highest priorities.
+
+You cannot casually reboot a power plant.
+
+Another issue: some industrial systems are decades old. Therefore:
+
+- Patching may be difficult
+- Legacy protocols may exist
+- Systems may need segmentation
+
+## High Availability
+
+High availability means designing systems to continue operating even if something fails.
+
+Example:
+
+Server A fails
+↓
+Server B continues service
+
+The goal is to minimize downtime.
+
+## Architecture Considerations
+
+CompTIA specifically expects you to consider factors such as:
+
+- Availability
+- Resilience
+- Cost
+- Scalability
+- Recovery
+- Patching
+- Power
+- Computing resources
 
 lateral movement
 
