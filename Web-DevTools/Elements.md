@@ -10,25 +10,33 @@ This pane shows the CSS rules affecting the selected element.
 
 For example:
 
+```css
 :root.light-theme {
     --bard-color-neutral-90: #e3e3e3;
     --bard-color-neutral-95: #f2f2f2;
 }
+```
 
 These:
 
+```css
 --bard-color-neutral-90
 --bard-color-neutral-95
+```
 
 are CSS custom properties, often called CSS variables.
 
 For example:
 
+```css
 --main-color: #ffffff;
+```
 
 can later be used as:
 
+```css
 color: var(--main-color);
+```
 
 ## Computed
 
@@ -92,10 +100,10 @@ This lets you inspect how assistive technology sees the selected element.
 
 For example:
 
-Role
-Name
-ARIA attributes
-Accessibility tree
+- Role
+- Accessible name
+- ARIA attributes
+- Accessibility tree
 
 ## Important Things
 
@@ -103,14 +111,18 @@ What we see on the screen is the current DOM, which is not necessarily exactly t
 
 For example, the server may send:
 
+```html
 <div id="app"></div>
+```
 
 Then JavaScript runs and creates:
 
+```html
 <div id="app">
     <button>Login</button>
     <p>Hello</p>
 </div>
+```
 
 DevTools Elements will show the current DOM after JavaScript modifications.
 

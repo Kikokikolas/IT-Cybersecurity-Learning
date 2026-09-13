@@ -1,50 +1,52 @@
 # DNS
 
-DNS translates a domain name into an IP address
+The **Domain Name System (DNS)** translates domain names into IP addresses.
 
-Example:
-
+```text
 example.com -> 93.184.215.32
+```
 
-Computers communicate with IP addresses but IP addresses are hard to memorize so humans prefer things like google.com etc.
+Computers communicate using IP addresses, but IP addresses are difficult for
+people to memorise. DNS lets us use names such as `google.com` instead.
 
-What happens when you type a website
+## What Happens When You Visit a Website
 
 Suppose you enter:
 
+```text
 https://www.example.com
+```
 
-Before the browser can send:
+Before the browser can send the `GET /` request, it must discover the IP address
+for `www.example.com`.
 
-GET /
-
-it first needs to know where www.example.com is
-
+```text
 User
- │
- │ enters www.example.com
- ▼
+	|
+	| enters www.example.com
+	v
 Browser
- │
- │ "What is the IP of www.example.com?"
- ▼
-DNS Resolver
- │
- │ finds the answer
- ▼
-IP address
- │
- │ 93.184.216.34
- ▼
+	|
+	| "What is the IP address of www.example.com?"
+	v
+DNS resolver
+	|
+	| finds the answer
+	v
+IP address: 93.184.216.34
+	|
+	v
 Browser
- │
- │ Now I know where to connect
- ▼
-Web Server
- │
- │ HTTPS / HTTP request
- ▼
+	|
+	| HTTPS/HTTP request
+	v
+Web server
+	|
+	v
 Webpage
+```
 
-DNS -> where is the server?
-HTTP / HTTPS -> give me the webpage/data
+In short:
+
+- **DNS**: Where is the server?
+- **HTTP/HTTPS**: Send me the webpage or data.

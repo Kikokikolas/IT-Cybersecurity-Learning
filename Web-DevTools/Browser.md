@@ -8,7 +8,7 @@ The process is something like this:
 
 1. The user enters a URL in the browser.
 2. The DNS resolver translates the domain name into an IP address.
-3. The browser establishes a connection with the server
+3. The browser establishes a connection with the server.
 4. The browser sends an HTTP/HTTPS request
 5. The server responds with the requested resource, usually an HTML document
 6. The browser reads the HTML and discovers other required resources, such as:
@@ -22,6 +22,7 @@ The process is something like this:
 
 Example:
 
+```text
 +--------+                     +--------+
 | Browser|                     | Server |
 +--------+                     +--------+
@@ -39,12 +40,13 @@ Example:
      |------ GET /logo.png -------> |
      | <-------- Image ------------ |
      |                              |
-     | Render webpage locally       |
+    | Render webpage locally       |
+```
 
 
 ## Client-Side vs Server-Side
 
-The browser receives and executes client-side resources as:
+The browser receives and executes client-side resources such as:
 - HTML
 - CSS
 - JavaScript
@@ -90,12 +92,14 @@ Modern web applications may communicate with servers many times after the initia
 ## What really happens to the HTML?
 
 After the request, the server can send something like this:
+```html
 <html>
     <body>
         <h1>Hello</h1>
         <p>Welcome to my website</p>
     </body>
 </html>
+```
 
 The browser parses the HTML and builds a structure called the DOM (Document Object Model).
 
@@ -116,9 +120,11 @@ JavaScript can modify the DOM in real time.
 ## CSS
 The browser also analyzes the CSS.
 
+```css
 h1 {
     font-size: 32px;
 }
+```
 
 This creates another structure called CSSOM (CSS Object Model)
 
@@ -151,13 +157,16 @@ Pixels on Screen
 
 ### Layout
 
-    The browser calculates where the button will be placed, its width and height, and where the text begins.
+The browser calculates where the button will be placed, its width and height,
+and where the text begins.
 
 ### Paint
-    After the layout, the browser draws things such as text, backgrounds, borders, shadows, and images.
+After the layout, the browser draws text, backgrounds, borders, shadows, and
+images.
 
 ### Compositing
-    Some parts of the page can be treated as layers and then combined, usually with the help of the GPU.
+Some parts of the page can be treated as layers and then combined, usually with
+the help of the GPU.
 
 
 ## JavaScript
@@ -170,20 +179,23 @@ JavaScript provides the website's behavior.
 
 Example:
 
-button.addEventListener("click",function() {
+```js
+button.addEventListener("click", function () {
     alert("Hello!");
 });
+```
 
 The browser has a JavaScript engine that executes this code. In Chrome and Chromium, that engine is V8.
 
-With JavaScript we can:
-    - Modify the DOM
-    - Make HTTP requests
-    - Read cookies
-    - Use localStorage
-    - Respond to clicks
-    - Create animations
-    - Communicate with APIs
+With JavaScript, we can:
+
+- Modify the DOM
+- Make HTTP requests
+- Read cookies
+- Use localStorage
+- Respond to clicks
+- Create animations
+- Communicate with APIs
 
 From a cybersecurity perspective, this is very important because XSS attacks involve JavaScript executing in a page.
 

@@ -24,28 +24,28 @@ Browser
 Chrome records those requests in the Network panel while DevTools is open.
 
 The columns shown are:
-Name | Status | Type | Initiator | Size | Time
 
-Name -> the name of the resource
+| Name | Status | Type | Initiator | Size | Time |
+|---|---|---|---|---|---|
+| Resource name | HTTP response status | Resource type | Request cause | Transferred data | Request duration |
 
-Status -> the HTTP response status
-
-Type -> the type of resource Chrome thinks it is
-
-Initiator -> what caused this request to happen
-
-Size -> how much data was transferred for the resource
-
-Time -> how long the request took
+The columns show the resource name, response status, resource type, request
+initiator, transferred data, and request duration.
 
 Very roughly:
+
+```text
 Browser sends request
-       ↓
-waits
-       ↓
-receives response
-       ↓
+       |
+       v
+Waits
+       |
+       v
+Receives response
+       |
+       v
 319 ms total
+```
 
 ### Common resource types
 

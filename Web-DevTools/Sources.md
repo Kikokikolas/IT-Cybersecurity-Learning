@@ -10,36 +10,39 @@ Sources -> which source files did the browser load, and where is the code runnin
 
 When you open Sources, you will normally see several areas.
 
+```text
 Sources
-│
-├── Page
-│   ├── HTML files
-│   ├── JavaScript files
-│   ├── CSS files
-│   └── other loaded resources
-│
-├── Code editor
-│   └── shows the selected file
-│
-└── Debugging tools
-    ├── Breakpoints
-    ├── Call Stack
-    ├── Scope
-    └── Watch
+|
+|- Page
+|  |- HTML files
+|  |- JavaScript files
+|  |- CSS files
+|  `- Other loaded resources
+|
+|- Code editor
+|  `- Shows the selected file
+|
+`- Debugging tools
+        |- Breakpoints
+        |- Call Stack
+        |- Scope
+        `- Watch
+```
 
 The most important part initially is Page. There, we can browse the resources that came from the current page and sometimes from third-party domains.
 
 For example:
 
+```text
 example.com
-│
-├── index.html
-├── main.js
-├── app.js
-└── style.css
+|- index.html
+|- main.js
+|- app.js
+`- style.css
 
 googleapis.com
-└── some-library.js
+`- some-library.js
+```
 
 This shows that the browser did not necessarily receive everything from a single server. Modern pages commonly load scripts, fonts, analytics, APIs, and other resources from multiple domains.
 
@@ -47,18 +50,25 @@ This JavaScript was delivered to the browser and can therefore be inspected.
 
 This reinforces something we discussed earlier:
 
+```text
 Server-side source code
-        ↓
-usually remains on the server
+        |
+        v
+Usually remains on the server
 
 Client-side JavaScript
-        ↓
-sent to browser
-        ↓
-can be inspected in Sources
+        |
+        v
+Sent to browser
+        |
+        v
+Can be inspected in Sources
+```
 
 Production JavaScript often looks horrible, though:
 
-(()=>{var a=1,b=function(c){return c+1};...
+```js
+(() => { var a = 1, b = function (c) { return c + 1 }; ... })();
+```
 
 That is often because the code has been minified or bundled to reduce file size.
