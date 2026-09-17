@@ -22,3 +22,4 @@ When your computer connects to a network, it doesn't know its own IP address or 
              | -------- 3. REQUEST --------------------> | "I accept! Please reserve 192.168.1.50 for me."
              | <------- 4. ACK ------------------------- | "Confirmed. It's yours for the next 24 hours."
              |                                           |
+This process is called DORA (Discover, Offer, Request, Acknowledge), and it automatically provides your computer with its network configuration.
