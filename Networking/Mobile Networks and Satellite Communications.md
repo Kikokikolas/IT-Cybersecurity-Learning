@@ -128,3 +128,121 @@ One of the most known uses of MEO is satellite navigation
 
 GPS satellites orbit around 20 200km of altitude, in medium earth orbit
 
+### GEO - Geostationary Earth Orbit
+
+A GEO satellite orbits the earth synced with earth rotation. In our point of view its always in the same place.
+
+             🛰
+             |
+             |
+             |
+             🌍
+
+This is used to telivision by satellite, tellecomunications, internet, meteorology communication. The problem about this satellites its the latency.
+The signal has to travell a long distance
+Earth
+ ↓
+~36,000 km
+ ↓
+Satellite
+ ↓
+~36,000 km
+ ↓
+Earth
+
+| Orbit | Meaning | Distance | Latency | Coverage |
+|---|---|---|---|---|
+| **LEO** | Low Earth Orbit | Low | Low | Smaller |
+| **MEO** | Medium Earth Orbit | Medium | Medium | Medium |
+| **GEO** | Geostationary Earth Orbit | High | High | Very large |
+
+
+## Starlink example
+
+When we open for example youtube.com using starlink internet, the dataflow is this:
+
+Your device
+   ↓
+Wi-Fi Router
+   ↓
+Starlink Dish / User Terminal
+   ↓
+Starlink Satellite
+   ↓
+Starlink Ground Gateway
+   ↓
+Starlink Point of Presence (PoP)
+   ↓
+Internet
+   ↓
+YouTube Server
+
+1) The pc sends the request
+
+We enter youtube.com
+
+The pc creates the network packets and send them by wi fi to the router
+
+Laptop
+   ↓ Wi-Fi
+Starlink Router
+
+2) Router -> Starlink Antenna
+The router is connected to starlink user terminal, the antenna in the exterior.
+
+Laptop
+   ↓
+Router
+   ↓
+Starlink Dish
+
+This is not a normal antenna its a phased-array antenna. This allows to guide eletronical radio beams to a satellite without needing to move physically the antenna. The starlink satellites do the same.
+
+3)  Antenna -> Satellite
+
+Starlink Dish
+      ↑
+      │ radio signal
+      │
+      🛰
+Starlink Satellite
+
+4) What does the satellite do?
+
+The satellite needs to send the packet to a infrastructure connected to the internet.
+
+The normal way is to send directly to a on ground station
+
+Your Dish
+    ↓
+Satellite
+    ↓
+Starlink Gateway
+    ↓
+Fiber
+    ↓
+Internet
+
+User Terminal → satellites → Gateway Site → fiber → Point of Presence → Internet.
+
+5) The satellites can talk with each other
+
+The satellites can have: Optical Inter-Satellite Links - ISLs
+
+or simply:
+
+Space Lasers
+
+So this can happen
+
+Your Dish
+     ↓
+    🛰
+     ↓ laser
+    🛰
+     ↓ laser
+    🛰
+     ↓
+Ground Gateway
+     ↓
+Internet
