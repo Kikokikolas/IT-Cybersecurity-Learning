@@ -246,3 +246,10 @@ Your Dish
 Ground Gateway
      ↓
 Internet
+
+So instead of dish satellite ground gateway we can have dish satellite - satellite - satellite e ground gateway
+
+Mesh Network in space -> starlink indicates that satellites use otical connections between them to create a global network capable of redirect traffic beetwen them.
+
+Satellite A → Satellite B → Satellite C → Gateway
+
