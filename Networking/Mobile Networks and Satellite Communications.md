@@ -1,16 +1,21 @@
-# Mobile / Celular Networks
+# Mobile Networks and Satellite Communications
 
-A mobile network/celular network is the network used by phones for sms, calls and mobile internet: 3G, 4G/LTE and 5G.
+## Mobile / Cellular Networks
 
+A mobile network, or cellular network, is the network used by phones for SMS, calls, and mobile internet: 3G, 4G/LTE, and 5G.
+
+```text
         Cell Tower
             📡
        /     |      \
       /      |       \
  Phone     Phone     Phone
   📱        📱        📱
+```
 
-When a phone uses 4G or 5G
+When a phone uses 4G or 5G:
 
+```text
 Phone
   ↓ radio signal
 Cell Tower
@@ -20,58 +25,68 @@ Mobile Operator Network
 Internet
   ↓
 Server
+```
 
-An example is openning google.com without Wi-Fi:
+An example is opening `google.com` without Wi-Fi:
 
+```text
 Phone
-↓
-5G antenna
-↓
-Vodafone / MEO / NOS network
-↓
+  ↓
+5G Antenna
+  ↓
+Vodafone / MEO / NOS Network
+  ↓
 Internet
-↓
-Google server
+  ↓
+Google Server
+```
 
-The communication between the phone and the antenna is made in radio frequences(RF)
+Communication between the phone and the antenna uses radio frequencies (RF).
 
-The phone identifies himself to the network by his SIM/eSIM, which contains the information to authenticate the user.
+The phone identifies itself to the network through its SIM/eSIM, which contains the information needed to authenticate the user.
 
-## Handover/ Handoff
+### Handover / Handoff
 
-Imagine that you go on a car:
+Imagine that you are travelling in a car:
 
+```text
 Tower A             Tower B             Tower C
   📡                  📡                  📡
    \                   |                  /
     📱 → → → → → → → 📱 → → → → → → → 📱
+```
 
-While moving, the phone lets a cell and connects to the next one.
-This is called handover, the network tries to do this transition without interrupt the connection to the internet
+While moving, the phone leaves one cell and connects to the next one.
+This is called **handover**. The network tries to make this transition without interrupting the internet connection.
 
-## Generations
+### Generations
 
-2G -> mainly voice and SMS
-3G -> mobile Internet
-4G -> fast IP-based data
-5G -> higher speed, lower latency, many more connected devices
+- **2G**: Mainly voice and SMS.
+- **3G**: Mobile internet.
+- **4G**: Fast IP-based data.
+- **5G**: Higher speeds, lower latency, and many more connected devices.
 
-## Security concerns
+### Security Concerns
 
-There is a big difference between
+There is a big difference between Wi-Fi and cellular network paths:
 
-Wi-Fi
+**Wi-Fi:**
+
+```text
 Phone → Access Point → LAN → Internet
+```
 
-Cellular
+**Cellular:**
+
+```text
 Phone → Cell Tower → Mobile Provider → Internet
+```
 
-# Satellite Communications - SATCOM
+## Satellite Communications (SATCOM)
 
-Here its different
+Instead of communicating with an antenna on the ground, we can communicate with a satellite.
 
-Instead of communicating with a on ground antenna, we can communicate with a satellite
-
+```text
 Ground Station
      📡
       ↑
@@ -83,36 +98,41 @@ Ground Station
       ↓
      📡
 Ground Station
+```
 
-Uplink = Terra -> satélite
-Downlink = satélite -> Terra
+- **Uplink**: Earth → satellite.
+- **Downlink**: Satellite → Earth.
 
-## GEO, MEO and LEO Satellites
+### GEO, MEO, and LEO Satellites
 
-Not every satellites are at the same height
+Not all satellites orbit at the same altitude.
 
-### LEO - Low Earth Orbit
-Low Earth Orbit
+#### LEO — Low Earth Orbit
 
-Satellites that are near the earth
+LEO satellites are close to Earth.
 
+```text
         🛰 🛰 🛰
      🛰       🛰
    🛰    🌍     🛰
      🛰       🛰
         🛰 🛰
+```
 
-They are closer so:
-    - less distance for the signal
-    - less latency
-    - less power needed
-    - each satelite covers little areas
+Because they are closer:
 
-So normally you need alot of satelites in constelation
+- The signal travels a shorter distance.
+- Latency is lower.
+- Less power is needed.
+- Each satellite covers a smaller area.
 
-### MEO- Medium Earth Orbit
-Between LEO and GEO
+Therefore, a constellation normally needs many satellites.
 
+#### MEO — Medium Earth Orbit
+
+MEO is between LEO and GEO.
+
+```text
 Earth
 
         LEO
@@ -123,45 +143,50 @@ Earth
 
                       GEO
                        🛰
+```
 
-One of the most known uses of MEO is satellite navigation
+One of the best-known uses of MEO is satellite navigation.
 
-GPS satellites orbit around 20 200km of altitude, in medium earth orbit
+GPS satellites orbit at an altitude of around 20,200 km, in medium Earth orbit.
 
-### GEO - Geostationary Earth Orbit
+#### GEO — Geostationary Earth Orbit
 
-A GEO satellite orbits the earth synced with earth rotation. In our point of view its always in the same place.
+A GEO satellite orbits Earth in sync with Earth's rotation. From our point of view, it is always in the same place.
 
+```text
              🛰
              |
              |
              |
              🌍
+```
 
-This is used to telivision by satellite, tellecomunications, internet, meteorology communication. The problem about this satellites its the latency.
-The signal has to travell a long distance
+These satellites are used for satellite television, telecommunications, internet access, and weather monitoring. One problem with these satellites is latency: the signal has to travel a long distance.
+
+```text
 Earth
- ↓
+  ↓
 ~36,000 km
- ↓
+  ↓
 Satellite
- ↓
+  ↓
 ~36,000 km
- ↓
+  ↓
 Earth
+```
 
 | Orbit | Meaning | Distance | Latency | Coverage |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **LEO** | Low Earth Orbit | Low | Low | Smaller |
 | **MEO** | Medium Earth Orbit | Medium | Medium | Medium |
 | **GEO** | Geostationary Earth Orbit | High | High | Very large |
 
+### Starlink Example
 
-## Starlink example
+When we open `youtube.com` using Starlink internet, for example, the data flow looks like this:
 
-When we open for example youtube.com using starlink internet, the dataflow is this:
-
-Your device
+```text
+Your Device
    ↓
 Wi-Fi Router
    ↓
@@ -176,43 +201,52 @@ Starlink Point of Presence (PoP)
 Internet
    ↓
 YouTube Server
+```
 
-1) The pc sends the request
+#### 1. The PC Sends the Request
 
-We enter youtube.com
+We enter `youtube.com`.
 
-The pc creates the network packets and send them by wi fi to the router
+The PC creates the network packets and sends them to the router over Wi-Fi.
 
+```text
 Laptop
    ↓ Wi-Fi
 Starlink Router
+```
 
-2) Router -> Starlink Antenna
-The router is connected to starlink user terminal, the antenna in the exterior.
+#### 2. Router → Starlink Antenna
 
+The router is connected to the Starlink user terminal, the antenna outside.
+
+```text
 Laptop
    ↓
 Router
    ↓
 Starlink Dish
+```
 
-This is not a normal antenna its a phased-array antenna. This allows to guide eletronical radio beams to a satellite without needing to move physically the antenna. The starlink satellites do the same.
+This is a **phased-array antenna**. It can electronically steer radio beams towards a satellite without physically moving the antenna. Starlink satellites do the same.
 
-3)  Antenna -> Satellite
+#### 3. Antenna → Satellite
 
+```text
 Starlink Dish
       ↑
       │ radio signal
       │
       🛰
 Starlink Satellite
+```
 
-4) What does the satellite do?
+#### 4. What Does the Satellite Do?
 
-The satellite needs to send the packet to a infrastructure connected to the internet.
+The satellite needs to send the packet to infrastructure connected to the internet.
 
-The normal way is to send directly to a on ground station
+The usual way is to send it directly to a ground station.
 
+```text
 Your Dish
     ↓
 Satellite
@@ -222,19 +256,19 @@ Starlink Gateway
 Fiber
     ↓
 Internet
+```
 
-User Terminal → satellites → Gateway Site → fiber → Point of Presence → Internet.
+```text
+User Terminal → Satellites → Gateway Site → Fiber → Point of Presence → Internet
+```
 
-5) The satellites can talk with each other
+#### 5. The Satellites Can Talk to Each Other
 
-The satellites can have: Optical Inter-Satellite Links - ISLs
+Satellites can have **optical inter-satellite links (ISLs)**, or simply, **space lasers**.
 
-or simply:
+This allows the following path:
 
-Space Lasers
-
-So this can happen
-
+```text
 Your Dish
      ↓
     🛰
@@ -246,10 +280,60 @@ Your Dish
 Ground Gateway
      ↓
 Internet
+```
 
-So instead of dish satellite ground gateway we can have dish satellite - satellite - satellite e ground gateway
+Instead of dish → satellite → ground gateway, we can have dish → satellite → satellite → satellite → ground gateway.
 
-Mesh Network in space -> starlink indicates that satellites use otical connections between them to create a global network capable of redirect traffic beetwen them.
+This creates a **mesh network in space**. Starlink indicates that its satellites use optical connections to create a global network capable of redirecting traffic between them.
 
+```text
 Satellite A → Satellite B → Satellite C → Gateway
+```
 
+#### 6. What Are the Lasers For?
+
+If you are on a boat in the middle of the Atlantic with no Starlink ground station nearby, the traffic can follow this path:
+
+```text
+Ship
+  ↓
+Starlink Dish
+  ↓
+🛰 Satellite 1
+  ↓ laser
+🛰 Satellite 2
+  ↓ laser
+🛰 Satellite 3
+  ↓
+Gateway in Europe
+  ↓
+Internet
+```
+
+The satellite therefore does not need a ground station nearby. This is one of the main reasons internet access is possible on oceans, in remote areas, and on aeroplanes.
+
+#### 7. When the Traffic Reaches the Gateway
+
+Eventually, the data needs to leave the space network.
+
+```text
+🛰
+  ↓
+Starlink Gateway
+```
+
+These stations are connected to terrestrial infrastructure through fiber connections to Starlink's network.
+
+The traffic then arrives at a **point of presence (PoP)**.
+
+```text
+Satellite
+  ↓
+Gateway
+  ↓
+Fiber
+  ↓
+Starlink PoP
+  ↓
+Internet
+```
