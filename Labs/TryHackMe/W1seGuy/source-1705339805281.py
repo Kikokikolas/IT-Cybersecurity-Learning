@@ -16,7 +16,7 @@ def setup(server, key):
     for i in range(0,len(flag)):
         xored += chr(ord(flag[i]) ^ ord(key[i%len(key)]))
 
-    hex_encoded = xored.encode().hex()
+    hex_encoded = xored.encode().hex() ##It converts bytes into a hexadecimal representation.
     return hex_encoded
 
 def start(server):
@@ -26,7 +26,7 @@ def start(server):
     send_message(server, "This XOR encoded text has flag 1: " + hex_encoded + "\n")
     
     send_message(server,"What is the encryption key? ")
-    key_answer = server.recv(4096).decode().strip()
+    key_answer = server.recv(4096).decode().strip() ##o strip removia espaços etc
 
     try:
         if key_answer == key:
