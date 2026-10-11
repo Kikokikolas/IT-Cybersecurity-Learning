@@ -143,35 +143,44 @@ undefined8 main(void)
 }
  this is the code that we have
 
+ We going to analyse line by line too review some sintaxe etc.
 
+We have the main function, we initialize 2 variables, iVarl a int and local_28 a char with space of 32. fwrite("Password: ",1,10, stdout);
 
+writes passord in the terminal, __isoc99_scanf("DoYouEven%sCTF", local_28); this scanf reads what the user input, the first argument is like a mold of reading. The local_28 is where the text is saved when captured by %s. So imagine we write DoYouEven_init. The scanf verifies if we wrote the inital DoYouEven, %s -> le o reads the next string and saves it in the variable local_28, then CTF tries to find CTF next, the problem is it finds a change of line, so this part fails. But _init is already saved so local28 = "_init" After we do a verification and after the verificaction we compare the variable with _init if its true gives the 0 so if iVarl == 0 its correct. Basically the input needs to be DoYouEven_initi to get the correct and this is the flag!
 
+For the revision on assembly im not going to go much deeper, because in the future im going to depeen even more.
 
+In intel sintaxe, normally we write instruction destiny and origin
+so:
 
+MOV EAX,5 ; EAX = 5
+MOV EAX, EBX; EAX =EBX
 
+Registrys - little spaces to save values in the processor.
 
+RAX, RBX, RCX, RDX -> 64 bits
+EAX,EBX,ECX,EDX -> 32 bits
+RSP -> points to the top of the stack
+RBP -> used frequently as referenci to local variables
 
+MOV EAX, EBX -- copies a value
 
+LEA RAX,[RBP-8] -- calculates a address
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ADD EAX, 2 -- Sum 2
+SUB EAX, 2 -- Subtracts 2
+INC EAX / DEC EAX -- Sums 1, subtracts 1 counters
+XOR EAX, EAX -- XOR
+CMP EAX, 5 -- comparation
+TEST EAX,EAX -- verifies if EAX is zero
+JMP destino -- always jumps
+JE / JZ -- jumps if equal/zero
+JNE/JNZ -- jumps if different/no zero
+CALL funcao -- calls a function
+RET -- returns from the function
+PUSH RAX -- puts a value in the stack
+POP RAX -- takes off the valoue of the stack
 
 
  # DONE
