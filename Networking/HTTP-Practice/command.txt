@@ -1,0 +1,1 @@
+curl -vk --connect-timeout 10 --max-time 20 --resolve blog.futurevera.thm:443:10.128.134.95 https://blog.futurevera.thm/
