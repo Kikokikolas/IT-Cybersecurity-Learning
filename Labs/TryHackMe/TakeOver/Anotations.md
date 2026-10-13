@@ -98,19 +98,115 @@ This returned **200 OK**, a certificate with `CN=blog.futurevera.thm`, and a pag
 
 The IP `10.128.134.95` was used in this successful test. Check the current lab IP before repeating it, because restarting the machine may change its IP.
 
-### My conclusion: how the subdomain reaches the server
-
-In this lab, mapping `futurevera.thm` to an IP in `/etc/hosts` does not automatically map `blog.futurevera.thm` or any other subdomain. Each hostname needs its own IP mapping unless DNS already resolves it.
-
-We supplied the blog's IP directly with `curl --resolve`. This works like a temporary hosts-file entry for that command only; the browser does not receive that mapping. To open the blog in the browser, we can add its name to the existing lab entry in `/etc/hosts`, using the current machine IP:
-
-```text
-10.128.134.95 futurevera.thm blog.futurevera.thm
-```
-
-We guessed the name `blog` from the challenge description and confirmed it when the server returned the blog page. Adding a name to `/etc/hosts` does not create a website or prove it exists; it only tells our computer where to send requests for that name.
-
-On the Internet, DNS normally provides these mappings automatically. Subdomains can use different IP addresses, but in this test the main site and the blog responded on the same IP.
-
 Next, inspect the blog's `about.html` and `post.html` pages and test `support.futurevera.thm` using the same matching-name approach.
+
+So now taht we know that blog.futurevera.thm exists we go explore it
+
+## SECOND STEP
+
+When we did ffuf -u https://futurevera.thm/ -H "Host: FUZZ.futurevera.thm" -w ~/Desktop/Tools/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -k -ac -o subdominios.html -of html we wanted to know if the server runned another machines. A server with a single IP can host many websites.
+
+After doing this occured a problem, in HTTPS, the name of the site is also delivred when it starts a secure connection, before the request of the page. The command was only altering the name of the request.
+
+So we connected but requesting the page it didnt show, in the manual test the server showed that with the 421, because we not only have that but we dont have a IP associated with the blog page.
+
+Then to test the blog.futurevera.thm page
+
+Just for resume. In HTTPS the sequency of connection is:
+
+1) Connect to the server - to the IP and port of the web server
+2) Prepare the secure connection (TLS) - the client indicates the site name by SNI, receives the certificate and negotiate the encryption.
+
+SIN - Server Name Indication - The name of the site that the client says when starting the HTTP connection
+
+3) Sends the HTTP request in that secure connection, requests the page and indicates again the site on the header Host
+4) Recevies the answerr- like 200 OK and the HTML
+
+In the test, we send futurever.thm on step 2 and blog.futurevera.thm on step 3. The server received it and denied it with 421
+
+So then i did curl -vk --connect-timeout 10 --max-time 20 --resolve blog.futurevera.thm:433:10.128.134.95 https://blog.futurevera.thm/
+
+We used `curl` to test the connection and `--resolve` to map `blog.futurevera.thm` to the machine’s IP for that command, because we had not added the subdomain to `/etc/hosts`. Using `https://blog.futurevera.thm/` as the URL ensured that the blog’s hostname was used both when establishing the HTTPS connection (SNI) and when sending the HTTP request (`Host`).
+
+-v is verbose shows deaitls of the connection, of the certificate and answers and questions
+-k ignores the validation of the certifi
+--max-time 20 limitates the operation to 20 seconds
+
+After we run the command we receive 200 OK and the page FutureVera-Blogs. This confirmed the page. Unfortonately we explored the code of the page and nothing interesting was there so we moved on to ther other 421 we receive on the support.futurevere.thm
+
+## THIRD STEP
+
+curl -vk --connection-timeout 10 --max-time 20 --resolve support.futurevera.thm:433:10-128.134.95 https://suport.futurevera.thm/
+
+We also receive 200 OK and the title of the page. The page didnt have much information so we explored the HTTPS certificate
+
+Basically when we open a https://support.futurever.thm. before requesting the page
+
+1) Browser start the connection indicates the website name by the SNI
+2) The server shows the certificate
+3) The browser verifies if the certificate is valid to the name if its in expiration date and if it trust on how sign it
+4) If its all ok, concludes connection and browser sends the HTTP
+
+The certificate can have 
+
+SAN - Subject Alternative Name - Lists the names of sites covered by the certificate
+Public Key - Helps to verificate if the server has the private key
+Emissor - Identifies who sign the certificate.
+Expirate data - Indicates when the certificate is no longer valid
+
+We used openssl s_client -connect 10.128.134.95:443 -servername support.futurevera.thm </dev/null 2>/dev/null | openssl x509 -noout -subject -ext subjectAltName  to see the data from the certificate
+
+openssl s_client connects to the server and gets the supoort certificate
+openssl x509 reads the certificate and show is primal identity (subject) and additional names (SAN)
+
+We run this line and we got
+subject=C = US, ST = Oregon, L = Portland, O = Futurevera, OU = Thm, CN = support.futurevera.thm
+X509v3 Subject Alternative Name:
+    DNS:secrethelpdesk934752.support.futurevera.thm
+
+    | Field | Value | Meaning |
+|---|---|---|
+| `C` | US | Country |
+| `ST` | Oregon | State or region |
+| `L` | Portland | Locality |
+| `O` | Futurevera | Organization |
+| `OU` | Thm | Organizational unit |
+| `CN` | support.futurevera.thm | Certificate’s common name |
+| `Subject Alternative Name` | secrethelpdesk934752.support.futurevera.thm | Additional hostname covered by the certificate |
+
+So we found a secret subdomain secrethelpdesk934752.support.futurevera.thm
+
+We did curl -v -i --connect-timeout 10 --max-time 20 --resolve secrethelpdesk934752.support.futurevera.thm:433:10.128.134.95 http://secrethelpdesk934752.support.futurevera.thm/
+
+We did this and just received the normal futurevera page so then we tried port 80 the http one
+curl -v -i --connect-timeout 10 --max-time 20 -resolve secrethelpdesk934752.support.futurevera.thm:433:10.128.134.95 http://secrethelpdesk934752.support.futurevera.thm/
+
+The response was this : 
+HTTP/1.1 302 Found
+Date: Sun, 11 Oct 2026 23:06:14 GMT
+Server: Apache/2.4.41 (Ubuntu)
+Location: http://flag{beea0d6edfcee06a59b83fb50ae81b2f}.s3-website-us-west-3.amazonaws.com/
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8
+
+This is was our flag
+
+By the way i need to review codes, like 302 is termporary redirect
+
+# DONE
+
+
+
+Important
+
+| Part | Meaning |
+|---|---|
+| **`HTTP/1.1`** | The HTTP version used for the response. |
+| **`302 Found`** | The status code and its description. Here, it indicates a temporary redirect. |
+| **`Date`** | The time the server says it generated the response, rather than exactly when you received it. |
+| **`Server: Apache/2.4.41 (Ubuntu)`** | The server advertises Apache as its web-server software, with an Ubuntu label. This is reported information, not proof of the actual software or OS. |
+| **`Location`** | The address the server wants the client to visit next. **This is where we found the flag.** |
+| **`Content-Length: 0`** | The response body contains zero bytes. We still received the headers. |
+| **`Content-Type: text/html`** | Describes the body as HTML text. In this response, the body was empty. |
+| **`charset=UTF-8`** | Declares UTF-8 as the character encoding, telling the client how to interpret the body’s bytes as text. |
 
