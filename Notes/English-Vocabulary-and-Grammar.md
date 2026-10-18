@@ -64,3 +64,36 @@ Fonte: mensagem do utilizador nesta conversa (sem ficheiro de origem).
 | Before | Correct | Explicação |
 | --- | --- | --- |
 | transforms in representative bits in hexadecimal | It converts bytes into a hexadecimal representation. | Para indicar conversão, usa-se *convert … into …*. *Representation* é o nome «representação»; *representative* não tem esse sentido. Acrescenta-se o sujeito *It*. No contexto de `.hex()`, são os bytes que ficam representados em texto hexadecimal. |
+
+## 2026-10-18 — Cryptography
+
+Fonte: mensagem do utilizador nesta conversa (sem ficheiro de origem).
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| crypthography | cryptography | «Criptografia» em inglês escreve-se *cryptography*, sem «h» depois do «t». |
+
+## 2026-10-18 — Symmetric and Asymmetric Cryptography
+
+Fonte: mensagem do utilizador nesta conversa (sem ficheiro de origem).
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| Symmetric cryptography , the same key is used to encrypt and decrypt. | In symmetric cryptography, the same key is used to encrypt and decrypt data. | A preposição *in* liga o tema à oração: «na criptografia simétrica». |
+| Asymetric Cryptograph | Asymmetric cryptography | *Asymmetric* escreve-se com dois «m»; o nome da área é *cryptography*. |
+| its created two different keys | two different keys are created | Na voz passiva, o sujeito plural *two different keys* exige *are created*. *Its* é um possessivo. |
+| the person we sending the message | the person we are sending the message to | O presente contínuo exige *are*; *to* indica o destinatário da mensagem. |
+| and persona can decrypt using his private key | and that person can decrypt it using their private key | Em inglês, usa-se *person* para «pessoa»; *persona* tem outro sentido. *It* explicita o objeto de *decrypt* e *their* permite referir uma pessoa sem indicar o género. |
+| because mathematically is easier to resolve | because the mathematical operations are easier to perform | Falta um sujeito explícito depois de *because*. Para executar operações, usa-se *perform*; *resolve* não é o verbo adequado neste contexto. |
+| Asymetric cryptography is longer | Asymmetric cryptography takes longer | *Asymmetric* leva dois «m»; para indicar que algo demora mais tempo, usa-se *takes longer*. |
+
+## 2026-10-18 — Cryptographic Algorithms
+
+Fonte: mensagem do utilizador nesta conversa, incorporada em [Symmetric vs Asymmetric Cryptography](../Cryptography/symmetric-vs-asymmetric.md). Data de revisão: 2026-10-18.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| asymmmetric | asymmetric | A palavra tem dois «m», não três. |
+| algorthms | algorithms | Falta o «i» depois de «r». |
+| Digital Signature algorithm | Digital Signature Algorithm | No nome completo da sigla DSA, *Algorithm* também começa por maiúscula. |
+| The ones i studied are AES, RSA and ECC | The ones I have studied are AES, RSA, and ECC. | O pronome *I* escreve-se sempre com maiúscula. *Have studied* é adequado para experiência acumulada até ao presente; *studied* também é gramatical. |
