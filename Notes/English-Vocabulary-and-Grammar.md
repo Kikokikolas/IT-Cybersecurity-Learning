@@ -97,3 +97,35 @@ Fonte: mensagem do utilizador nesta conversa, incorporada em [Symmetric vs Asymm
 | algorthms | algorithms | Falta o «i» depois de «r». |
 | Digital Signature algorithm | Digital Signature Algorithm | No nome completo da sigla DSA, *Algorithm* também começa por maiúscula. |
 | The ones i studied are AES, RSA and ECC | The ones I have studied are AES, RSA, and ECC. | O pronome *I* escreve-se sempre com maiúscula. *Have studied* é adequado para experiência acumulada até ao presente; *studied* também é gramatical. |
+
+## 2026-10-18 — ECDH Explanation
+
+Fonte: mensagem do utilizador nesta conversa (sem ficheiro de origem). Data de revisão: 2026-10-18.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| The one i explored with more detail was ECDH | The technique I explored in more detail was ECDH | O pronome *I* escreve-se com maiúscula; a expressão correta é *in more detail*. |
+| this technique allows to create a secret between two persons | This technique allows two people to establish a shared secret. | *Allow* exige um objeto antes de *to*: *allows two people to*. |
+| in a unsafe public network | over an unsafe public network | Usa-se *an* antes do som vocálico de *unsafe*; *over a network* descreve comunicação através de uma rede. |
+| The mathematic behind it is this one | The mathematics behind it works as follows | O nome da área é *mathematics*, com «s»; *works as follows* introduz a explicação. |
+
+## 2026-10-18 — RSA Explanation
+
+Fonte: mensagem do utilizador nesta conversa (sem ficheiro de origem). Data de revisão: 2026-10-18.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| the destination public key | the recipient's public key | Para a pessoa que recebe a mensagem, usa-se *recipient*; o possessivo indica a quem pertence a chave. |
+| The mathematic behind it | The mathematics behind it | O nome da área é *mathematics*, com «s». |
+| private expoent | private exponent | Falta o «n» em *exponent*. |
+
+## 2026-10-19 — RSA Explanation
+
+Fonte: mensagem do utilizador nesta conversa (sem ficheiro de origem). Data de revisão: 2026-10-19.
+
+As correções de *the destination public key*, *The mathematic behind it* e *private expoent* já estão registadas na revisão anterior; não se repetem os mesmos pares.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| a cryptography technique | a cryptographic technique | Usa-se o adjetivo *cryptographic* para qualificar *technique*. |
+| we have p and q two numbers | we have two numbers, p and q | Coloca-se *two numbers* antes dos nomes que os identificam, separados por vírgula. |
