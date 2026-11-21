@@ -1,0 +1,45 @@
+# Merkle Trees and Content-Addressable Storage (CAS)
+
+## 1. Merkle Trees (Hash Trees)
+
+A Merkle tree is a tree of hashes:
+
+- **Leaf nodes** hold the hashes of individual data chunks, such as file blocks, database rows, or blockchain transactions.
+- **Parent nodes** hold the hash of their child hashes concatenated together (for example, `H(H_left || H_right)`).
+- **Merkle root** is the top hash that summarizes the entire dataset.
+
+```text
+               [ Merkle root ]
+               /             \
+         [ H_AB ]           [ H_CD ]
+         /      \           /      \
+     [ H_A ]  [ H_B ]   [ H_C ]  [ H_D ]
+       |        |         |        |
+    Chunk A  Chunk B   Chunk C  Chunk D
+```
+
+### Why Merkle Trees Are Useful
+
+- **Fast tamper detection:** If even one byte in Chunk C changes, its hash H_C changes. That changes H_CD and, in turn, the Merkle root. Anyone who has the trusted root can tell that the data has changed.
+- **Lightweight inclusion proofs:** Suppose you have 1,000,000 transactions and want to prove that Chunk C is part of the dataset. You do not need to download all the chunks. You need Chunk C and the sibling hashes H_D and H_AB to recompute and verify the root. In a balanced tree, this requires about 20 hashes rather than a million.
+- **Fast synchronization between peers:** Two nodes can compare their roots first. If the roots differ, they can check only the branches with mismatched hashes instead of transferring everything again.
+
+Merkle trees are used in Git repositories, blockchains for transaction and state verification, BitTorrent, and Certificate Transparency logs.
+
+## 2. Content-Addressable Storage (CAS)
+
+Normally, storage systems look up data by its location or name, such as `/home/user/report.pdf` or row ID 42. In content-addressable storage, data is addressed by what it is: a cryptographic hash of its content.
+
+### How It Works
+
+Hash a piece of data, such as a file, directory snapshot, or container layer, and store it under that hash (`hash → content`). Anyone with the hash can retrieve the content and verify its integrity by hashing the returned data and checking that the result matches the identifier.
+
+### Benefits and Examples
+
+- **Automatic deduplication:** Identical files or layers produce the same hash, so storage systems can keep only one copy.
+- **Immutability:** Changing a single bit changes the hash. Content stored under a given hash is therefore treated as immutable; an edit produces a new hash rather than silently changing the existing content.
+
+Examples include:
+
+- **Git:** Blobs (file contents), trees (directories), and commits are identified by content hashes, making history tamper-evident and easy to share.
+- **Docker / OCI container images:** Filesystem layers are identified by content digests, allowing registries and hosts to cache and reuse identical layers.
