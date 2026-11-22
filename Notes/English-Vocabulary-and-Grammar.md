@@ -168,3 +168,41 @@ Fonte: [Merkle Trees and CAS](../Hashing/Merkle%20Trees%20and%20CAS). Data de re
 | Anyone who has the hash can retrieve the content and verify it's genuine by hashing the returned bytes and checking they match the ID. | Anyone with the hash can retrieve the content and verify its integrity by hashing the returned data and checking that the result matches the identifier. | *Verify its integrity* é mais preciso para conteúdo digital do que *verify it's genuine*; *the result* elimina a referência ambígua de *they*. |
 | If ten projects or servers store the exact same file or layer, they produce the exact same hash, so it only needs to be stored once. | Identical files or layers produce the same hash, so storage systems can keep only one copy. | A reformulação elimina a referência ambígua de *it* e torna claro que são ficheiros ou camadas idênticos que geram o mesmo hash. |
 | Docker / OCI container images: Filesystem layers are identified by content digests so registries and hosts can cache and reuse identical layers cleanly. | Docker / OCI container images: Filesystem layers are identified by content digests, allowing registries and hosts to cache and reuse identical layers. | A vírgula separa a oração explicativa; *allowing* liga de forma mais natural a identificação por digest ao cache e à reutilização. |
+
+## 2026-11-22 — Labs/MD2PDF/Anotations.md
+
+Fonte: `Labs/MD2PDF/Anotations.md`. Data de revisão: 2026-11-22.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| We start and we dont have any link for web page so we do a nmap scan to identify open ports. The open ports are 80 and 5000. 80 is for http. | We start without a link to the web page, so we run an Nmap scan to identify open ports. Ports 80 and 5000 are open. Port 80 is used for HTTP. | Usa-se uma ligação *to the web page*, o artigo *an* antes de *Nmap* e a sigla *HTTP* em maiúsculas; *dont* exige apóstrofo ou reformulação. |
+| We put the http://IP and we got access to a page where we can turn text to a PDF | We enter http://IP in the browser and access a page where we can convert text into a PDF. | Usa-se *enter* para introduzir um endereço e *convert … into …* para conversão; mantém-se o presente. |
+| First we look to the page source and i dont see nothing: | First, we look at the page source, but we do not see anything useful: | A expressão é *look at*; evita-se a dupla negação *dont … nothing* e mantém-se o sujeito *we*. |
+| this is the script that turns the markdown in the pdf | This is the script that sends the Markdown to the server for conversion into a PDF. | A frase começa por maiúscula; para conversão usa-se *into*, e *PDF* é uma sigla. |
+| finds the &lt;textarea&gt; with id="md" and turns it into a COdeMirror editor. | It finds the &lt;textarea&gt; with id="md" and turns it into a CodeMirror editor. | Acrescenta-se o sujeito *It* e corrige-se a grafia de *CodeMirror*. |
+| For testing the server we tried &lt;b&gt;Hello&lt;/b&gt; to see if it would return B yes it does. | To test the server, we try &lt;b&gt;Hello&lt;/b&gt; to see whether it renders the text in bold. It does. | *In bold* significa «a negrito»; separam-se as orações e mantém-se o tempo verbal do relato. |
+
+## 2026-11-22 — Labs/TryHackMe/Neighbour/Anotations.md
+
+Fonte: `Labs/TryHackMe/Neighbour/Anotations.md`. Data de revisão: 2026-11-22.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| WE open the link and we get the login page | We open the link and reach the login page. | Corrige-se a capitalização de *We* e termina-se a frase. |
+| We look to the page source and we get this | We look at the page source and find the following: | A expressão correta é *look at*, não *look to*. |
+| We see to enter we can use guest account, user: guest, password: guest. | We see that we can log in using the guest account: username: guest, password: guest. | Usa-se *see that*, *log in* para iniciar sessão e o artigo *the* antes de *guest account*. |
+| http://10.129.178.202/profile.php?user=admin in the URL, and we see the page source and ... we get this: | We inspect the page source and find the following: | A frase original não tem verbo na primeira oração; a reformulação explicita a ação sem antecipar a alteração descrita abaixo. |
+| A message saying the admin account might be weaken. At first i tought we could do a bruteforce, but no i just modified the URL from view-source:http://10.129.178.202/profile.php?user=guest to view-source:http://10.129.178.202/profile.php?user=admin and i got access | A comment says that the admin account might be vulnerable. At first, I think we might need a brute-force attack, but I simply change the URL from view-source:http://10.129.178.202/profile.php?user=guest to view-source:http://10.129.178.202/profile.php?user=admin and gain access. | *Weaken* é um verbo, não o adjetivo pretendido; *tought* escreve-se *thought*, *I* leva maiúscula e usa-se *a brute-force attack*. O relato foi uniformizado no presente. |
+| after channging we got access to the flag. | After changing the URL, we gain access to the flag. | Corrige-se *channging* para *changing*, a maiúscula inicial e o tempo verbal. |
+| This one was like 2 minutes to crack | This challenge takes about two minutes to solve. | Para duração usa-se *takes*, não *was*. |
+| The vulnerabilitie we explored is IDOR, insecure direct object reference. The server uses a user-controlled parameter to sellect a profile without verifying whether the logged in user is authorized to access it. | The vulnerability we exploit is IDOR (insecure direct object reference). The server uses a user-controlled parameter to select a profile without verifying whether the logged-in user is authorized to access it. | Corrigem-se *vulnerabilitie*, *sellect* e o adjetivo composto *logged-in*; *exploit* designa a exploração da vulnerabilidade. |
+| For this to not happen the backend needs to check both: | To prevent this, the backend needs to check both: | *To prevent this* exprime de forma clara a finalidade de impedir a falha. |
+| Check wether that user is allowed to view the requested profile | Check whether that user is allowed to view the requested profile. | *Whether* escreve-se com «h» depois de «w». |
+
+## 2026-11-22 — HMACs and Digital Signatures
+
+Fonte: `Hashing/HMACs & Digital Signatures.md`. Data de revisão: 2026-11-22.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| Anyone with the sender's public key hashes the received message to get digest and checks that the signature matches digest under that public key. | Anyone with the sender's public key hashes the received message to get the digest and checks that the signature matches the digest under that public key. | Falta o artigo *the* antes de *digest*, pois se refere ao resumo específico da mensagem. |
