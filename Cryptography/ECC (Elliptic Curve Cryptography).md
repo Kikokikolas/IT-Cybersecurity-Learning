@@ -1,3 +1,5 @@
+# Elliptic Curve Cryptography (ECC)
+
 ECC is a family of cryptographic techniques based on the mathematical properties of elliptic curves.
 
 The technique I explored in more detail was **ECDH (Elliptic Curve Diffie–Hellman)**. It allows two people to establish a shared secret over a public network without sending the secret itself. This secret is then used to **derive symmetric keys**, which can encrypt and decrypt data using an algorithm such as AES.
@@ -78,3 +80,28 @@ AES-GCM or ChaCha20-Poly1305 → protect the actual data
 ```
 
 The ephemeral key pairs are temporary: in a typical TLS handshake using ECDHE, each side generates a pair for that handshake, not for every HTTP request. The temporary private keys should be erased once they are no longer needed. Public keys do not need to be erased for secrecy. The derived symmetric keys continue to protect the connection until they are replaced or discarded.
+
+A common example is **opening an HTTPS website**, such as your email provider.
+
+When the connection uses ECDHE:
+
+1. **Your browser and the server exchange temporary public keys.** Each keeps its private key secret.
+2. **Both calculate the same shared secret**, using their own private key and the other side’s public key.
+3. **A KDF derives symmetric keys** from that secret and information about the connection.
+4. **AES-GCM or ChaCha20-Poly1305 protects the actual traffic**, such as your login details, HTTP requests, and emails.
+
+The server also uses its certificate and a digital signature to authenticate the handshake.
+
+```text
+Browser                             Email server
+   │                                      │
+   ├──── Exchange ECDHE public keys ───────┤
+   │                                      │
+Calculate secret                    Calculate same secret
+Derive keys                         Derive same keys
+   │                                      │
+   ├──── Encrypted HTTP request ──────────►│
+   │◄──── Encrypted email content ─────────┤
+```
+
+**In Wireshark**, you can normally see the ECDHE public key shares in the TLS handshake. The later HTTP traffic appears as encrypted TLS data unless you provide the session secrets needed to decrypt it.
