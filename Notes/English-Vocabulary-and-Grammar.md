@@ -206,3 +206,46 @@ Fonte: `Hashing/HMACs & Digital Signatures.md`. Data de revisão: 2026-11-22.
 | Before | Correct | Explicação |
 | --- | --- | --- |
 | Anyone with the sender's public key hashes the received message to get digest and checks that the signature matches digest under that public key. | Anyone with the sender's public key hashes the received message to get the digest and checks that the signature matches the digest under that public key. | Falta o artigo *the* antes de *digest*, pois se refere ao resumo específico da mensagem. |
+
+## 2026-11-23 — Processes and Threads in Linux
+
+Fonte: `Threads-and-Processes/Processes.md`. Data de revisão: 2026-11-23.
+
+Os exemplos abaixo preservam excertos do texto original. As alterações de formatação e as correções exclusivamente técnicas não são registadas como erros de inglês.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| SO | OS | Em inglês, *operating system* abrevia-se como *OS*; *SO* é a sigla portuguesa. |
+| accompany and manage it | track and manage it | Neste contexto, acompanhar o estado de um processo é *track*, não *accompany*. |
+| while is allive | while it is running | Falta o sujeito *it*; *allive* escreve-se *alive*. Para um processo em execução, usa-se *running*. |
+| preparing the recipt in that exact moment | preparing the recipe at that exact moment | Receita culinária é *recipe*; usa-se *at that moment*, não *in that moment*. |
+| 2 windoes or independt services | two windows or independent services | Corrigem-se as grafias de *windows* e *independent*. |
+| in the disk | on disk | Para ficheiros armazenados, a expressão é *on disk*. |
+| each one with his PID | each with its own PID | Para processos usa-se *its*, não o pronome pessoal *his*. |
+| When the kernel of the Linux creates a process he saves like a table of his status it is called PCB Process Control Block. | When the Linux kernel creates a process, it records information used to manage that process in kernel data structures. | Usa-se *the Linux kernel*, sem artigo antes de *Linux*, e *it* para o kernel. A frase foi reorganizada para evitar orações sem separação. |
+| Everything in linux borns from other process | Almost every user-space process in Linux is created by another process. | *Borns* não é uma forma verbal correta; usa-se *is created* ou *is born*. *Another process* fornece o determinante e *Linux* leva maiúscula. |
+| The Owner in this case User and the permissions who started it. | The user who started the process and the associated permissions. | *Who* deve referir-se à pessoa, não às permissões; a ordem foi corrigida. |
+| Alocated memory | Allocated memory | *Allocated* escreve-se com dois «l». |
+| reserved to the code | reserved for the code | Para indicar a finalidade de uma reserva, usa-se *reserved for*. |
+| The atual state in that instante | The current state at that moment | Neste contexto, «atual» é *current*; *at that moment* substitui a expressão com a palavra portuguesa *instante*. |
+| S wait for a event or input | S: waiting for an event or input | Usa-se *an* antes de *event* e *waiting* para descrever o estado. |
+| stoped/suspended | stopped/suspended | *Stopped* duplica o «p». |
+| Context of execeution | Execution context | Corrige-se a grafia de *execution*; *execution context* é a expressão técnica habitual. |
+| in which instruction it goes | which instruction it is executing | *Execute an instruction* exprime a ação; *in which instruction it goes* não é uma construção idiomática. |
+| In linux almost every processes born form other process | In Linux, almost every process is created by another process. | *Every* exige singular; falta uma forma verbal válida e *form* foi usado no lugar de *from*. |
+| In linux/Unix this birth normally happens in 2 class steps. | In Linux and Unix, a common way to launch a program has two steps: | Corrige-se a capitalização de *Linux* e a expressão *class steps*, que não descreve corretamente os passos pretendidos. |
+| the son | the child | Na terminologia de processos, usa-se *child*, não *son*. |
+| with is PID and his PPID poiting to his father | with its own PID and a PPID identifying its parent | Corrigem-se *is* para *its*, *poiting* para *pointing* e os termos de parentesco para *parent* e *child*. |
+| after borning | after being created | *Borning* não é uma forma correta; pode usar-se *after being created*. |
+| We can see examples of processes as terminal bash. | Bash is an example of a process running in a terminal. | Para apresentar um exemplo, usa-se *an example of*; a ordem dos nomes foi corrigida. |
+| ont itslef without fork ing first | on itself without forking first | Corrigem-se *ont*, *itslef* e a separação incorreta de *forking*. |
+| commnd | command | Falta o «a» em *command*. |
+| The keep the shell alive while running commands, bash follows the for-exec-wait | To keep the shell alive while running commands, Bash follows a fork–exec–wait sequence. | A finalidade é introduzida por *To*, não *The*; corrige-se *for* para *fork*. |
+| spotify and programms that we program in python for example or c, or even our tab in google | Spotify, programs written in Python or C, and browser tabs | *Programs* tem um só «m»; os nomes *Spotify*, *Python* e *C* exigem maiúsculas, e *programs written in* é a construção adequada. |
+| Manages the window, local cache, and coordinates everything. | Manages the window and local cache, and coordinates the application. | A enumeração misturava objetos e verbos; separam-se as duas ações para manter o paralelismo gramatical. |
+
+## 2026-11-23 — Heat Transfer
+
+Fonte: `Physics/Heat-and-Cooling/Heat-Transfer.md`. Data de revisão: 2026-11-23.
+
+O texto foi revisto e organizado em secções e numa tabela. As alterações foram de formatação, clareza e precisão técnica; não foram identificados novos erros de inglês a acrescentar à tabela de correções.
