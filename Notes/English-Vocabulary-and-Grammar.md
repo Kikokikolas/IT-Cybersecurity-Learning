@@ -249,3 +249,27 @@ Os exemplos abaixo preservam excertos do texto original. As alterações de form
 Fonte: `Physics/Heat-and-Cooling/Heat-Transfer.md`. Data de revisão: 2026-11-23.
 
 O texto foi revisto e organizado em secções e numa tabela. As alterações foram de formatação, clareza e precisão técnica; não foram identificados novos erros de inglês a acrescentar à tabela de correções.
+
+## 2026-11-23 — Physics: Full Markdown Review
+
+Data de revisão: 2026-11-23. Os excertos originais foram guardados antes da edição. Alterações exclusivamente técnicas, de formatação e de estilo não contam como erros de inglês.
+
+Fonte: `Physics/Audio/Digital-Audio-and-PCM.md`.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| pipewire | PipeWire | O nome próprio do projeto escreve-se *PipeWire*. |
+| invisible to human ears | inaudible to human ears | *Invisible* refere-se à visão; para algo que não se ouve, usa-se *inaudible*. A frase técnica foi também reformulada para reconhecer diferenças entre ouvintes. |
+
+Fonte: `Physics/Audio/Sound-and-Air-Pressure.md`.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| a split-second later, the membrane pulls backward | A split second later, the membrane pulls backward | A frase começa por maiúscula. Neste uso como nome, *split second* não precisa de hífen. |
+| Nitrogen and Oxygen | nitrogen and oxygen | Os nomes comuns dos elementos químicos escrevem-se em minúsculas no meio da frase. |
+
+Fonte: `Physics/Waves/Frequency-Amplitude-and-Wavelength.md`.
+
+| Before | Correct | Explicação |
+| --- | --- | --- |
+| It is measured in Hertz (Hz). | It is measured in hertz (Hz). | O nome da unidade escreve-se em minúsculas; o símbolo conserva a grafia *Hz*. |
